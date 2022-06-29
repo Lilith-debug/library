@@ -12,20 +12,21 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-function addDeleteButton(newRow, id) {
-    const newCell = document.createElement("td");
-    const deleteButton = document.createElement("button");
-    deleteButton.setAttribute("class", `${id} delete`);
-    deleteButton.textContent = "Delete";
-    newCell.appendChild(deleteButton);
-    
-    newRow.appendChild(newCell);
-}
-
 function deleteBook(button) {
     const deletedBook = button.classList;
     deletedBook.remove("delete");
     document.getElementById(deletedBook.value).remove();
+}
+
+function addDeleteButton(newRow, bookTitle) {
+    const newCell = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    
+    deleteButton.setAttribute("class", `delete ${bookTitle}`);
+    deleteButton.textContent = "Delete";
+    newCell.appendChild(deleteButton);
+    
+    newRow.appendChild(newCell);
 }
 
 function createBookTable() {
@@ -37,7 +38,14 @@ function createBookTable() {
 
             for (let info in myLibrary[book]) {
                 const newCell = document.createElement("td");
-                newCell.textContent = `${(myLibrary[book])[info]}`;
+                if (info == "read") {
+                    const checkbox = document.createElement("input");
+                    checkbox.setAttribute("type", "checkbox");
+                    checkbox.setAttribute("class", "toggle");
+                    newCell.appendChild(checkbox);
+                } else { 
+                    newCell.textContent = `${(myLibrary[book])[info]}`;
+                }
                 newRow.appendChild(newCell);
             }
 
@@ -46,7 +54,8 @@ function createBookTable() {
             tableBody.appendChild(newRow);
         }
     }
-
+    /* needs to attach event listeners to the delete buttons 
+    right after the table is created */
     const deleteBtns = tableBody.querySelectorAll(".delete");
     document.querySelectorAll(".delete").forEach((button) => {
         button.addEventListener("click", (event) => {
@@ -54,8 +63,6 @@ function createBookTable() {
         });
     });
 }
-
-
 
 
 const tableBody = document.querySelector("tbody");
@@ -67,24 +74,12 @@ const bookRead = document.querySelector("#read");
 const submit = document.querySelector(".submit");
 
 
-
-
-
 submit.addEventListener("click", () => {
     let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
     addBookToLibrary(newBook);
     createBookTable();
 })
 
-//document.querySelectorAll(".delete").forEach((button) => {
-//    button.addEventListener("click", (event) => {
-//        console.log("lol");
- //   })
-//})
-
-//document.querySelector(".delete").addEventListener("click", () => {
-//    console.log("lol");
-//})
 
 let theHobbit = Object.create(Book.prototype);
 theHobbit.title = "The Hobbit";
