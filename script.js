@@ -12,8 +12,25 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-function displayBooks() {
+function addDeleteButton(newRow, id) {
+    const newCell = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("class", `${id} delete`);
+    deleteButton.textContent = "Delete";
+    newCell.appendChild(deleteButton);
+    
+    newRow.appendChild(newCell);
+}
+
+function deleteBook(button) {
+    const deletedBook = button.classList;
+    deletedBook.remove("delete");
+    document.getElementById(deletedBook.value).remove();
+}
+
+function createBookTable() {
     for (let book in myLibrary) {
+        //avoid repeating books
         if (!document.getElementById(`${myLibrary[book].title}`)) {    
             const newRow = document.createElement("tr");
             newRow.setAttribute("id", `${myLibrary[book].title}`)
@@ -24,10 +41,22 @@ function displayBooks() {
                 newRow.appendChild(newCell);
             }
 
+            addDeleteButton(newRow, myLibrary[book].title);
+
             tableBody.appendChild(newRow);
         }
     }
+
+    const deleteBtns = tableBody.querySelectorAll(".delete");
+    document.querySelectorAll(".delete").forEach((button) => {
+        button.addEventListener("click", (event) => {
+            deleteBook(button);
+        });
+    });
 }
+
+
+
 
 const tableBody = document.querySelector("tbody");
 
@@ -37,11 +66,25 @@ const bookPages = document.querySelector("#pages");
 const bookRead = document.querySelector("#read");
 const submit = document.querySelector(".submit");
 
+
+
+
+
 submit.addEventListener("click", () => {
     let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
     addBookToLibrary(newBook);
-    displayBooks();
+    createBookTable();
 })
+
+//document.querySelectorAll(".delete").forEach((button) => {
+//    button.addEventListener("click", (event) => {
+//        console.log("lol");
+ //   })
+//})
+
+//document.querySelector(".delete").addEventListener("click", () => {
+//    console.log("lol");
+//})
 
 let theHobbit = Object.create(Book.prototype);
 theHobbit.title = "The Hobbit";
@@ -51,4 +94,4 @@ theHobbit.read = "yes";
 
 
 addBookToLibrary(theHobbit);
-displayBooks();
+createBookTable();
