@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="header">
@@ -19,7 +20,7 @@
         <input type="number" id="pages" name="book-pages">
         <label for="read">Read it?</label>
         <input type="checkbox" id="read" name="book-read">
-        <button type="submit">Add book</button>
+        <button type="submit" class="submit">Add book</button>
     </form>
     <div class="library">
         <table>
@@ -30,13 +31,18 @@
                 <col>
                 <col>
             </colgroup>
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Pages</th>
-                <th scope="col">Read</th>
-                <th scope="col"></th>
-            </tr>
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Pages</th>
+                    <th scope="col">Read</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
         </table>
     </div>
 </body>
