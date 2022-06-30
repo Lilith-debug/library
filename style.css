@@ -41,6 +41,10 @@ label {
     color: hsl(12, 6.5%, 15.1%);
 }
 
+input {
+    color: #78716C;
+}
+
 .library {
     display: flex;
     justify-content:start;
