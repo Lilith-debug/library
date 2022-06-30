@@ -4,7 +4,7 @@ function Book(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = read === true ? "Yes" : "No"
+    this.read = read
     
 }
 
@@ -42,6 +42,7 @@ function createBookTable() {
                     const checkbox = document.createElement("input");
                     checkbox.setAttribute("type", "checkbox");
                     checkbox.setAttribute("class", "toggle");
+                    checkbox.checked = myLibrary[book].read;
                     newCell.appendChild(checkbox);
                 } else { 
                     newCell.textContent = `${(myLibrary[book])[info]}`;
@@ -76,6 +77,7 @@ const submit = document.querySelector(".submit");
 
 submit.addEventListener("click", () => {
     let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
+    console.log(newBook.read);
     addBookToLibrary(newBook);
     createBookTable();
 })

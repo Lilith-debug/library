@@ -11,9 +11,17 @@ body {
     font-family: roboto;
 }
 
-.header {
+.container {
     display: flex;
-    padding: 40px 60px 60px 60px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header {
+    align-self: flex-start;
+    padding: 32px 64px 48px 256px;
+    
+    
 }
 
 #book-form {
@@ -21,7 +29,7 @@ body {
     justify-content: start;
     gap: 32px;
     align-items: center;
-    padding-left: 60px;
+    padding-left: 256px;
 }
 
 .input {
@@ -33,17 +41,30 @@ body {
 .library {
     display: flex;
     justify-content:start;
-    padding: 60px;
+    padding: 64px;
+    padding-left: 256px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 32px;
+    width: 56rem;
 }
 
 col {
-    width: 41vh;
+    width: 256px;
 }
 
-col.read {
-    width: 16vh;
+col.delete {
+    width: 128px
 }
 
 th {
     text-align: left;
+    border-bottom: 1px solid rgb(88, 88, 88);
 }
+
+th+th {
+    border-top: 1px solid rgba(88, 88, 88, 0.192);
+}
+
