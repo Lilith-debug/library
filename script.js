@@ -77,7 +77,6 @@ const submit = document.querySelector(".submit");
 
 submit.addEventListener("click", () => {
     let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
-    console.log(newBook.read);
     addBookToLibrary(newBook);
     createBookTable();
 })

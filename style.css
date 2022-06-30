@@ -20,15 +20,14 @@ body {
 .header {
     align-self: flex-start;
     padding: 32px 64px 48px 256px;
-    
-    
+    color: hsl(12, 6.5%, 15.1%);
 }
 
 #book-form {
     display: flex;
     justify-content: start;
     gap: 32px;
-    align-items: center;
+    align-items: flex-end;
     padding-left: 256px;
 }
 
@@ -36,6 +35,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+label {
+    color: hsl(12, 6.5%, 15.1%);
 }
 
 .library {
@@ -46,8 +49,7 @@ body {
 }
 
 table {
-    border-collapse: separate;
-    border-spacing: 0 32px;
+    border-collapse: collapse;
     width: 56rem;
 }
 
@@ -60,11 +62,32 @@ col.delete {
 }
 
 th {
+    color: hsl(12, 6.5%, 15.1%);
     text-align: left;
     border-bottom: 1px solid rgb(88, 88, 88);
 }
 
-th+th {
-    border-top: 1px solid rgba(88, 88, 88, 0.192);
+td{
+    color: #78716C;
+    border-bottom: 1px solid rgba(88, 88, 88, 0.212);
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button.submit{
+    color: hsl(60, 9.1%, 97.8%);
+    border: none;
+    background-color: hsl(30, 6.3%, 25.1%);
+    padding: 8px;
+}
+
+button.delete{
+    border: 1px solid hsl(24, 5.4%, 63.9%);
+    background: none;
+    color: hsl(12, 6.5%, 15.1%);
 }
 
