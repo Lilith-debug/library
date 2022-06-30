@@ -37,12 +37,26 @@ body {
     align-items: flex-start;
 }
 
+.input.read{
+    align-self: flex-start;
+    gap: 8px;
+}
+
 label {
     color: hsl(12, 6.5%, 15.1%);
 }
 
 input {
     color: #78716C;
+}
+
+
+button.submit{
+    color: hsl(60, 9.1%, 97.8%);
+    border: none;
+    background-color: hsl(30, 6.3%, 25.1%);
+    padding: 8px;
+    align-self: center;
 }
 
 .library {
@@ -80,13 +94,6 @@ td{
 
 button {
     cursor: pointer;
-}
-
-button.submit{
-    color: hsl(60, 9.1%, 97.8%);
-    border: none;
-    background-color: hsl(30, 6.3%, 25.1%);
-    padding: 8px;
 }
 
 button.delete{
