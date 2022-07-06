@@ -1,15 +1,17 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-    
-}
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
 
-function addBookToLibrary(newBook) {
-    myLibrary.push(newBook);
+    addToLibrary() {
+        myLibrary.push(this);
+    }
+    
 }
 
 function deleteBook(button) {
@@ -77,7 +79,7 @@ const submit = document.querySelector(".submit");
 
 submit.addEventListener("click", () => {
     let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
-    addBookToLibrary(newBook);
+    newBook.addToLibrary();
     createBookTable();
 })
 
